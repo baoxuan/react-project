@@ -525,7 +525,27 @@ a.whitebtn,
     color: #999;
 }
 
+/*条纹列表*/
 
+.striList li{
+    overflow: hidden;
+    background: #eee;
+    color: #333;
+}
+.striList li:nth-child(odd){
+    background: #dcdcdc;
+}
+.striList li span{
+    float: left;
+    width: 33.3%;
+    line-height: 49px;
+    height:49px;
+    text-align: center;
+    font-size: 13px;
+}
+@media screen and (min-width:321px){
+    .striList li span{font-size:14px;}
+}
 /*活动介绍*/
 
 .round-guoqi {
@@ -868,26 +888,25 @@ a.whitebtn,
 }
 
 /*记录筛选*/
-.select_bar{position: fixed;top: 0; z-index: 111;  overflow: hidden;width: 100%;}
+.select_bar{position: fixed; background: #fff; height: 48px; top: 0; z-index: 111;  overflow: hidden;width: 100%;text-align: center;}
 .shadow{height: 100%; width: 100%; background: rgba(0,0,0,.5)}
-.select_bar ul{width: 100%;z-index: 11; height: 45px;background: #f8f9fb; border-bottom: 1px solid #eee;}
-.select_bar li{position: relative;display:inline-block; cursor: pointer; overflow: hidden; float: left; width: 50%;height: 45px; line-height: 45px; color: #333; font-size: 15px; text-align: center; box-sizing:border-box;} 
-.select_bar li:before{ content: ""; position: absolute; width: 1px; height: 25px; top: 8px; right: 0;background: #eee;}
-.select_bar li {color:#333; display: block;}
-.select_bar li i{position: relative; display: inline-block; top: 5px; left: 5px; width: 0px; height: 0px; border: 6px solid #aaa; border-color: #d9d9d9 transparent  transparent; }
-.select_bar li.cur i{border-color: transparent transparent #3fb696 transparent;    top: -1px; }
-.select_bar li.cur span{color: #3fb696;}
+.select_bar ul{width: 100%;z-index: 11; height: 48px;background: #f8f9fb; border-bottom: 1px solid #eee;}
+.select_bar li{display:inline-block; cursor: pointer; overflow: hidden; width: 30%;height: 48px; line-height: 48px; color: #333; font-size: 15px; text-align: center; box-sizing:border-box;} 
+.select_bar li {color:#333; }
+.select_bar li i{position: relative; display: inline-block; top: 4px; left: 5px; width: 0px; height: 0px; border: 5px solid #aaa; border-color: #434343 transparent  transparent; }
+.select_bar li.cur i{border-color: transparent transparent #37bb8a transparent;    top: -1px; }
+.select_bar li.cur{color: #37bb8a;}
 .select_bar li:last-child:before{ width: 0px;}
 
-.select_pop{height: 100%;width: 100%;border-top: 1px solid #d8d8d8;}
-.select_pop dl{  width: 100%; background: #fff;display: none;}
-.select_pop dl.cur{display: block;}
-.select_pop dl dd{height: 45px; line-height: 45px; font-size: 15px; padding: 0 15px; color: #333;  border-bottom: 1px solid #eee; cursor: pointer;}
+.select_pop{height: 100%;width: 100%;border-top: 1px solid #eee;display: none;margin-top: 48px;}
+.select_pop dl{  width: 100%; background: #fff;}
+.select_pop.cur{display: block;}
+.select_pop dl dd{height: 45px; line-height: 45px; font-size: 14px; padding: 0 15px; color: #333;  border-bottom: 1px solid #eee; cursor: pointer;}
 .select_pop dl dd a{display: block; color: #333;}
 .select_pop dl dd i{ position: relative; float: right; width: 16px;height: 16px; margin-top: .7rem; border-radius:3px; border: 1px solid #b9b9b9;background: #fff;}
 
 .select_pop dl dd:last-child{ border-bottom: none;}
-.select_pop dl dd.on i{ background:#3fb696; }
+.select_pop dl dd.on{ color:#37bb8a; }
 .select_pop dl dd i:before{content: "";position: absolute;top:2px;left: 2px; width: 10px; height: 5px; border: 2px solid #fff; border-color: transparent transparent #fff #fff; 
 -webkit-transform:rotate(-45deg); }
 
@@ -900,7 +919,68 @@ a.whitebtn,
 .recordList li p.fail{color: #ffa20d;font-size: 12px;}
 .recordList li .fr{ text-align: right; float: right;width: 40%;}
 
-.nextPage{    width: 100%;
+
+.header{
+    padding: 8px 0;
+    height: 48px;
+    line-height: 30px;
+    background: #fff;
+    overflow: hidden;
+}
+.header ul{
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.header ul li{
+    font-size: 14px;
+    color: #333;
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+    width: 80px;
+}
+.header a{
+    display: block;
+    color: #333;
+}
+.header ul li.on,.header ul li.on a{
+    border-bottom: 2px solid #37bb8a;
+    color: #37bb8a;
+}
+.Tabcontent{
+    margin-top: 10px;
+    display: none;
+}
+.Tabcontent.active{
+    display: block;
+}
+.Tabcontent li{
+    margin-top: 10px;
+    background: #fff;
+    padding: 10px 15px;
+    font-size: 14px;
+}
+.Tabcontent li h3{
+    color: #999;
+    padding-bottom: 5px;
+}
+.Tabcontent li i{
+    background: #ffecd8;
+    color: #fda13c;
+    border-radius: 20px;
+    padding: 3px;
+    font-size: 12px;
+    margin-right: 5px;
+}
+.Tabcontent li p{
+    color: #434343;
+    padding-left: 25px;
+    line-height: 18px;
+}
+
+.nextPage{
+    width: 100%;
     margin: 10px 0;
     text-align: center;
     background: transparent;
@@ -983,7 +1063,7 @@ a.whitebtn,
 .sharebg .inputBox .phoneInput{
     width: 60%;
 }
-.sharebg .inputBox .valiBtn{
+/*.sharebg .inputBox .valiBtn{
     position: absolute;
     top: 0;
     right: 0;
@@ -998,6 +1078,24 @@ a.whitebtn,
 .sharebg .inputBox .valiBtn.greenBtn{
     background: #3eb595;
     border:1px solid #3eb595;
+}*/
+
+.sharebg .inputBox .valiBtn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 36px;
+    line-height: 36px;
+    background: #3eb595;
+    font-size: 15px;
+    border: 1px solid #3eb595;
+    border-radius: 3px;
+    color: #fff;
+}
+.sharebg .inputBox .valiBtn.disabled{
+    background: #d1d1d1;
+    border:1px solid #d1d1d1;
 }
 
 .sharebg .inputBox .input input{
@@ -1028,22 +1126,30 @@ a.whitebtn,
     width: 20px;
     height: 20px;
 }
-.sharebg  button{
+.sharebg  .Btn{
     display: block;
     width: 100%;
     margin: 0 auto;
-    background: #d1d1d1;
+    background: #3eb595;
     font-size: 18px;
     color: #fff;
     height: 41px;
     line-height: 41px;
     border-radius: 3px;
+    border: none;
 }
-.sharebg  button.greenBtn{
-    background: #3eb595;
+.sharebg  button.disabledBtn{
+    background: #d1d1d1;
 }
 
-
+.errToop{
+    background: #f43340;
+    color: #fff;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+}
 .wrapper .slider img{
     width: 100%;
 }
@@ -1087,6 +1193,7 @@ a.whitebtn,
     margin: 25px auto;
     text-align: center;
     color: #fff;
+    border: none;
 }
 .copy{
     height: 35px;
@@ -1945,7 +2052,23 @@ a.whitebtn,
     color: #999;
 }
 
+.toast{
+    position: fixed;
+    top: 40%;
+    padding: 20px 0;
+    background: rgba(0,0,0,.5);
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    border-radius:15px;
+    left:50%;
+    width: 180px;
+    margin-left: -90px;
 
+}
+.none{
+    display: none;
+}
 
 
 

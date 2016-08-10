@@ -9,6 +9,8 @@ export function getAPI(ApiName){
               {name:'PlatformList', url:'ppapi/Project/PlatformList_v3_0', type:"POST"},
               {name:'GetCard', url:'ppapi/Account/GetCard', type:'GET'},
               {name:'GetNoticesDetailByID', url:'ppapi/Sys/GetNoticesDetailByID_v2_5', type:'POST'},
+              {name:'InvitorInfo', url:'ppapi/AD/InvitorInfo', type:"GET"},
+              {name:'GetProductBuyLog', url:'ppapi/Product/GetProductBuyLog', type:"POST"},
 
 
               {'name':'ProductList', 'url':'ppapi/Product/ProductList_v3_0'},

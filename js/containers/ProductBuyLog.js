@@ -1,19 +1,19 @@
 import React,{Component, PropTypes}from 'react';
 import { connect } from 'react-redux';
 import {fetchPosts} from '../actions';
-import {FormatMoney} from '../utils';
+import {FormatMoney, getTime} from '../utils';
 import Events from '../utils/Events'
 
 import isEqual from 'lodash/isEqual'
 
-class myDreg extends React.Component {
+class ProductBuyLog extends React.Component {
     constructor(props) {
         super(props);
-        this.displayName = 'myDreg';
+        this.displayName = 'ProductBuyLog';
         this.state = {
         	PageIndex:1,
         	isLoading:false,
-        	listItem:[]
+        	listItems:[]
         };
     }
 
@@ -30,16 +30,13 @@ class myDreg extends React.Component {
             innerHeight = window.innerHeight,
             scrollHeight = document.body.scrollHeight,
             PageIndex = this.state.PageIndex,
-            query = this.props.location.query,
-    		header = {
-    			token: query.token,
-    			code: query.code
-    		};
+            query = this.props.location.query;
             if(scrollTop + innerHeight >= scrollHeight && this.state.isLoading ){
                 PageIndex++;
                 this.setState({PageIndex:PageIndex});
-	            this.props.dispatch(fetchPosts("PlatformListDreg_User",header,
+	            this.props.dispatch(fetchPosts("GetProductBuyLog","",
 	                  {
+	                  	ProductId:query.ProductId,
 	                    PageIndex:PageIndex,
 	                    RecordPerPage:30
 	                  })
@@ -48,18 +45,29 @@ class myDreg extends React.Component {
 
     }
     componentWillMount() {
-    	document.title="我的定期资产组合";
+    	let ProductId = this.props.location.query.ProductId;
+    	// ProductId 2 活期 5 6 7 分别是 三月 一月 九月
+    	if(ProductId == 6){
+    		document.title="一个月定期购买记录";
+    	}else if(ProductId == 5){
+    		document.title="三个月定期购买记录";
+    	}else if(ProductId == 7){
+    		document.title="九个月定期购买记录";
+    	}else{
+    		document.title="活期购买记录";
+    	}
     	// url 传递过来 ProductId
-    	let header = this.props.location.query;
+
     	let params = {
+    		ProductId:ProductId,
     		PageIndex:1,
     		RecordPerPage:30
     	}
-    	this.props.dispatch(fetchPosts("PlatformListDreg_User", header,params));
+    	this.props.dispatch(fetchPosts("GetProductBuyLog","",params));
     }
     componentWillReceiveProps(nextProps) {
-		if(!isEqual(nextProps.posts.ProjectList, this.props.posts.ProjectList)){
-			this.addList(nextProps.posts.ProjectList);
+		if(!isEqual(nextProps.posts.BuyLogInfor, this.props.posts.BuyLogInfor)){
+			this.addList(nextProps.posts.BuyLogInfor);
 		}
     }
     componentDidMount() {
@@ -70,30 +78,16 @@ class myDreg extends React.Component {
         console.log("componentWillUnmount");
         this._scrollListener && this._scrollListener.off();
     }
-    renderList(){
+    renderItems(){
     	const { posts } = this.props;
     	if(this.state.listItems){
     		return(
     		this.state.listItems.map((msg)=>(
-    			<div className="myPlatList" key={msg.id}>
-					<div className="proTitle" >
-						{msg.name}
-					</div>
-					<div className="container">
-						<dl>
-							<dt>持有资金(元)</dt>
-							<dd className="red">{msg.UserMoney < 0.01 ? "小于0.01" : FormatMoney(msg.UserMoney)}</dd>
-						</dl>
-						<dl className="bghui">
-							<dt>资产类型</dt>
-							<dd>{msg.debttype}</dd>
-						</dl>
-						<dl className="bghui">
-							<dt>资产方</dt>
-							<dd>{msg.platform}</dd>
-						</dl>
-					</div>
-				</div>
+    			<li key={msg.createtime}>
+    				<span>{msg.iphone}</span>
+    				<span>{getTime(msg.createtime)}</span>
+    				<span>{msg.money}</span>
+    			</li>
     			)))
     	}
     }
@@ -102,15 +96,17 @@ class myDreg extends React.Component {
     	let Loading = this.state.isLoading ? (<div className="Loading">正在加载更多</div>): null;
     	if(posts){
 	        return (
-	        	<div>
-		        	<div className="myPlat">
-						<h3>定期在投总金额(元)</h3>
-						<p>{FormatMoney(posts.UserDregMoney)}</p>
-						<h3>资产总数（<span className="red">{posts.InvestCount}</span>）</h3>
-					</div>
-					{this.renderList()}
-					{Loading}
-			</div>
+	        		<div className="striList">
+	        			<ul>
+	        				<li>
+	        					<span>用户</span>
+	        					<span>时间</span>
+	        					<span>金额(元)</span>
+	        				</li>
+	                       {this.renderItems()}
+	        			</ul>
+	        			 {Loading}
+	        		</div>
 			);
 		}
     	return(
@@ -120,7 +116,7 @@ class myDreg extends React.Component {
     }
 }
 
-myDreg.propTypes = {
+ProductBuyLog.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired
 }
@@ -130,7 +126,7 @@ function mapStateToProps(state){
   const {
     isFetching,
     items: posts
-  } = postsByApi["PlatformListDreg_User"] || {
+  } = postsByApi["GetProductBuyLog"] || {
     isFetching: false,
     items: []
   }
@@ -139,4 +135,4 @@ function mapStateToProps(state){
     isFetching
   }
 }
-export default connect(mapStateToProps)(myDreg);
+export default connect(mapStateToProps)(ProductBuyLog);

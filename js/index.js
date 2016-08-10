@@ -15,6 +15,12 @@ import platform from './containers/platform'// 活期债权组合
 import dregform from './containers/dregform'// 定期债权组合
 import buyProtocol from './containers/buyProtocol' // 购买协议
 import NoticesDetail from './containers/NoticesDetail' // 公告详情页
+import Share from './containers/Share' // 邀请好友
+import download from './containers/download' // 下载页
+import ProductBuyLog from './containers/ProductBuyLog'// 购买记录
+import trade from './containers/trade'// 购买记录
+import introduction from './containers/introduction'// 优惠卷介绍
+
 
 import configureStore from './stores/configureStore'
 
@@ -30,6 +36,12 @@ render(
 	    <Route path="/platform" component={platform} />
 	    <Route path="/dregform" component={dregform} />
 	    <Route path="/NoticesDetail" component={NoticesDetail} />
+	    <Route path="/Share" component={Share} />
+	    <Route path="/download" component={download} />
+	    <Route path="/ProductBuyLog" component={ProductBuyLog} />
+	    <Route path="/trade" component={trade} />
+	    <Route path="/introduction" component={introduction} />
+
 	    <Route path="/Login" component={Login} />
 	    <Route path="/Register" component={Register} />
 

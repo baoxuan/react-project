@@ -57,6 +57,21 @@ export function fetchGET(ApiName, params) {
       .then(json => dispatch(receivePosts(ApiName, json)));
   };
 }
+
+export function fetchGETParams(ApiName, params) {
+  var header = {"Content-Type":"application/json"};
+  return dispatch => {
+    dispatch(requestPosts(ApiName));
+    return fetch("http://ppapi.ppjijin.com/ppapi/AD/InvitorInfo?userId="+params.userid,
+      {
+        method: 'GET',
+        headers: header
+      })
+      .then(response => response.json())
+      .then(json => dispatch(receivePosts(ApiName, json)));
+  };
+}
+
 //导出提交表单的方法
 export function _submitForm(ApiName, params) {
   var header = {"Content-Type":"application/json", "code":getRandomCode()};
