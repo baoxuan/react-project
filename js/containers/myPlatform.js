@@ -1,4 +1,4 @@
-import React,{Component, PropTypes}from 'react';
+import React, {Component, PropTypes}from 'react';
 import { connect } from 'react-redux';
 import {fetchPosts} from '../actions';
 import {FormatMoney} from '../utils';
@@ -38,7 +38,7 @@ class myPlatform extends React.Component {
             if(scrollTop + innerHeight >= scrollHeight && this.state.isLoading ){
                 PageIndex++;
                 this.setState({PageIndex:PageIndex});
-	            this.props.dispatch(fetchPosts("PlatformList_User",header,
+	            this.props.dispatch(fetchPosts("PlatformList_User", header,
 	                  {
 	                    ProductId:query.ProductId,
 	                    PageIndex:PageIndex,
@@ -61,7 +61,7 @@ class myPlatform extends React.Component {
     		PageIndex:1,
     		PageSize:30
     	}
-    	this.props.dispatch(fetchPosts("PlatformList_User", header,params));
+    	this.props.dispatch(fetchPosts("PlatformList_User", header, params));
     }
     componentWillReceiveProps(nextProps) {
 		if(!isEqual(nextProps.posts.ProjectList, this.props.posts.ProjectList)){
@@ -69,11 +69,9 @@ class myPlatform extends React.Component {
 		}
     }
     componentDidMount() {
-        console.log("componentDidMount");
         this._scrollListener = Events.on(window, 'scroll', this.checkButtom.bind(this));
      }
     componentWillUnmount() {
-        console.log("componentWillUnmount");
         this._scrollListener && this._scrollListener.off();
     }
     renderList(){

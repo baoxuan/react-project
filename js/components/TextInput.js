@@ -53,7 +53,7 @@ function valiPhone(e){
 function valiPassword(e){
         if (e.length < 6 || e.length > 16) {
             return{
-              Msg:"密码为6-16为数字和字母组合",
+              Msg:"密码为6-16为数字和字母组合"
             };
         }
         return "";

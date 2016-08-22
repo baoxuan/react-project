@@ -888,17 +888,16 @@ a.whitebtn,
 }
 
 /*记录筛选*/
-.select_bar{position: fixed; background: #fff; height: 48px; top: 0; z-index: 111;  overflow: hidden;width: 100%;text-align: center;}
+.select_bar{position: fixed;z-index: 99; background: #fff; height: 48px; top: 0; z-index: 111;  overflow: hidden;width: 100%;}
 .shadow{height: 100%; width: 100%; background: rgba(0,0,0,.5)}
-.select_bar ul{width: 100%;z-index: 11; height: 48px;background: #f8f9fb; border-bottom: 1px solid #eee;}
-.select_bar li{display:inline-block; cursor: pointer; overflow: hidden; width: 30%;height: 48px; line-height: 48px; color: #333; font-size: 15px; text-align: center; box-sizing:border-box;} 
-.select_bar li {color:#333; }
-.select_bar li i{position: relative; display: inline-block; top: 4px; left: 5px; width: 0px; height: 0px; border: 5px solid #aaa; border-color: #434343 transparent  transparent; }
-.select_bar li.cur i{border-color: transparent transparent #37bb8a transparent;    top: -1px; }
+.select_bar ul{width: 100%;z-index: 11; height: 48px;background: #f8f9fb; border-bottom: 1px solid #eee;text-align: center;}
+.select_bar li{position: relative;  display:inline-block; cursor: pointer; overflow: hidden; padding: 0 30px; height: 48px; line-height: 48px; color: #333; font-size: 15px; text-align: center; box-sizing:border-box;} 
+.select_bar li:before{content: ""; position: absolute; top: 22px; right: 15px; display: inline-block;  width: 0px; height: 0px; border: 5px solid #aaa; border-color: #434343 transparent  transparent; }
+.select_bar li.cur:before{border-color: transparent transparent #37bb8a transparent;top: 18px; }
 .select_bar li.cur{color: #37bb8a;}
 .select_bar li:last-child:before{ width: 0px;}
 
-.select_pop{height: 100%;width: 100%;border-top: 1px solid #eee;display: none;margin-top: 48px;}
+.select_pop{position: absolute;top: 0px; height: 100%;width: 100%;border-top: 1px solid #eee;display: none;margin-top: 48px;}
 .select_pop dl{  width: 100%; background: #fff;}
 .select_pop.cur{display: block;}
 .select_pop dl dd{height: 45px; line-height: 45px; font-size: 14px; padding: 0 15px; color: #333;  border-bottom: 1px solid #eee; cursor: pointer;}
@@ -911,40 +910,41 @@ a.whitebtn,
 -webkit-transform:rotate(-45deg); }
 
 .recordList{margin-top:50px;text-align: center; overflow: hidden; font-size: 14px;}
-.recordList li{ overflow: hidden;background: #fff;  padding: 8px 15px;  line-height: 36px; height: 36px; border-bottom: 1px solid #eee; }
-.recordList li div{float: left; width: 60%; text-align: left;}
-.recordList.w50 li div{float: left; width: 40%; }
-.recordList li p{line-height: 14px;padding: 3px;}
-.recordList li p.subName{color: #999;font-size: 12px;}
-.recordList li p.fail{color: #ffa20d;font-size: 12px;}
-.recordList li .fr{ text-align: right; float: right;width: 40%;}
+.recordList li{ overflow: hidden;background: #fff;  padding: 0px 15px;  line-height: 50px; height: 50px; border-bottom: 1px solid #eee; }
+.recordList li:nth-child(odd){
+    background: #eee;
+}
+.recordList li div{float: left; text-align: left; color: #37bb8a; font-size: 16px;}
+.recordList li div.red{color: #f43340;}
+.recordList li p{line-height: 18px;color: #999;font-size: 12px; text-align: right;}
+
+.recordList li .fr{ text-align: right; float: right;width: 60%; padding-top: 8px;}
 
 
-.header{
+.head{
     padding: 8px 0;
     height: 48px;
     line-height: 30px;
     background: #fff;
     overflow: hidden;
 }
-.header ul{
+.head ul{
     display: block;
     width: 100%;
     text-align: center;
 }
-.header ul li{
+.head ul li{
     font-size: 14px;
     color: #333;
     display: inline-block;
-    width: 60px;
+    padding: 0 10px;
     text-align: center;
-    width: 80px;
 }
-.header a{
+.head a{
     display: block;
     color: #333;
 }
-.header ul li.on,.header ul li.on a{
+.head ul li.on,.head ul li.on a{
     border-bottom: 2px solid #37bb8a;
     color: #37bb8a;
 }
@@ -977,6 +977,7 @@ a.whitebtn,
     color: #434343;
     padding-left: 25px;
     line-height: 18px;
+    text-align: justify;
 }
 
 .nextPage{
@@ -2068,6 +2069,9 @@ a.whitebtn,
 }
 .none{
     display: none;
+}
+.mt50{
+    margin-top: 50px;
 }
 
 

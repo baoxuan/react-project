@@ -1,4 +1,4 @@
-import React,{Component, PropTypes}from 'react';
+import React, {Component, PropTypes}from 'react';
 import { connect } from 'react-redux';
 import {fetchPosts} from '../actions';
 import {FormatMoney, getTime} from '../utils';
@@ -34,7 +34,7 @@ class ProductBuyLog extends React.Component {
             if(scrollTop + innerHeight >= scrollHeight && this.state.isLoading ){
                 PageIndex++;
                 this.setState({PageIndex:PageIndex});
-	            this.props.dispatch(fetchPosts("GetProductBuyLog","",
+	            this.props.dispatch(fetchPosts("GetProductBuyLog", "",
 	                  {
 	                  	ProductId:query.ProductId,
 	                    PageIndex:PageIndex,
@@ -48,11 +48,11 @@ class ProductBuyLog extends React.Component {
     	let ProductId = this.props.location.query.ProductId;
     	// ProductId 2 活期 5 6 7 分别是 三月 一月 九月
     	if(ProductId == 6){
-    		document.title="一个月定期购买记录";
+    		document.title="1个月定期购买记录";
     	}else if(ProductId == 5){
-    		document.title="三个月定期购买记录";
+    		document.title="3个月定期购买记录";
     	}else if(ProductId == 7){
-    		document.title="九个月定期购买记录";
+    		document.title="9个月定期购买记录";
     	}else{
     		document.title="活期购买记录";
     	}
@@ -63,7 +63,7 @@ class ProductBuyLog extends React.Component {
     		PageIndex:1,
     		RecordPerPage:30
     	}
-    	this.props.dispatch(fetchPosts("GetProductBuyLog","",params));
+    	this.props.dispatch(fetchPosts("GetProductBuyLog", "", params));
     }
     componentWillReceiveProps(nextProps) {
 		if(!isEqual(nextProps.posts.BuyLogInfor, this.props.posts.BuyLogInfor)){
@@ -71,11 +71,9 @@ class ProductBuyLog extends React.Component {
 		}
     }
     componentDidMount() {
-        console.log("componentDidMount");
         this._scrollListener = Events.on(window, 'scroll', this.checkButtom.bind(this));
      }
     componentWillUnmount() {
-        console.log("componentWillUnmount");
         this._scrollListener && this._scrollListener.off();
     }
     renderItems(){

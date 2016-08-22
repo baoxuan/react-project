@@ -1,6 +1,5 @@
 // 投资协议页面
-
-import React,{Component, PropTypes}from 'react';
+import React, {Component, PropTypes}from 'react';
 import { connect } from 'react-redux';
 import {fetchGET} from '../actions';
 import {FormatMoney} from '../utils';

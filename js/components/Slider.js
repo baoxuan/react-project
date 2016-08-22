@@ -4,7 +4,7 @@ import ReactSwipe from 'react-swipe';
 const  bannerData = [
 	{key:"ba1", imgUrl:"./public/images/banner1.jpg"},
 	{key:"ba2", imgUrl:"./public/images/banner2.jpg"},
-	{key:"ba3", imgUrl:"./public/images/banner3.jpg"},
+	{key:"ba3", imgUrl:"./public/images/banner3.jpg"}
 ];
 
 const banners = bannerData.map(function (e){
@@ -48,6 +48,6 @@ swipeCallback(e, t){
 }
 Slider.propTypes = {
   continuous: PropTypes.bool.isRequired,
-  auto:PropTypes.number.isRequired,
+  auto:PropTypes.number.isRequired
 };
 export default Slider;

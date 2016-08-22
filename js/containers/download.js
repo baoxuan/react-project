@@ -73,7 +73,7 @@ class download extends React.Component {
 	  	}
 	  }
 	}
-	hideHandler(){
+	hideHandler(e){
 	  	e.preventDefault();
 	  	this.setState({isShow:false});
 	}

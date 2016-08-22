@@ -9,7 +9,7 @@ export function getCookie(name){
       if(pp_start !=-1){
         pp_start += name.length+1;
        var  pp_end = document.cookie.indexOf(';', pp_start);
-        if(pp_end == -1) pp_end = document.cookie.length;
+        if(pp_end == -1) {pp_end = document.cookie.length};
         return  document.cookie.substring(pp_start, pp_end);
       }
     }
@@ -29,15 +29,19 @@ export function getRandomCode(){
 
 export function FormatMoney(s) {
       var s = (s!== void 0 && s!== null) && s.toString();
-        if (/[^0-9\.]/.test(s)) return "";
+        if (/[^0-9\.]/.test(s)){ 
+          return "";
+        }
         s = s.replace(/^(\d*)$/, "$1.");//对一个匹配的数字后面加.
         s = (s + "00").replace(/(\d*\.\d\d)\d*/, "$1");
         s = s.replace(".", ",");
         var re = /(\d)(\d{3},)/;
-        while (re.test(s))
-            s = s.replace(re, "$1,$2");
+        while (re.test(s)){
+                s = s.replace(re, "$1,$2");
+              }
         s = s.replace(/,(\d\d)$/, ".$1");
         return  s.replace(/^\./, "0.");
+
 }
  export function get2Decimals(decimal){
     var decimal = (Math.floor(decimal*10000)/100).toString();

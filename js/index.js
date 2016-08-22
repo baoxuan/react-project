@@ -5,8 +5,6 @@ import { render } from 'react-dom'
 import { Router, Route, hashHistory } from 'react-router'
 import { Provider } from 'react-redux'
 
-import Login from './containers/Login'
-import Register from './containers/Register'
 import contribute from './containers/contribute' //升级规则
 import Protocol from './containers/Protocol' //投资协议
 import myPlatform from './containers/myPlatform' //我的活期资产
@@ -17,7 +15,7 @@ import buyProtocol from './containers/buyProtocol' // 购买协议
 import NoticesDetail from './containers/NoticesDetail' // 公告详情页
 import Share from './containers/Share' // 邀请好友
 import download from './containers/download' // 下载页
-import ProductBuyLog from './containers/ProductBuyLog'// 购买记录
+import ProductBuyLog from './containers/ProductBuyLog'// 产品购买记录
 import trade from './containers/trade'// 购买记录
 import introduction from './containers/introduction'// 优惠卷介绍
 
@@ -42,8 +40,6 @@ render(
 	    <Route path="/trade" component={trade} />
 	    <Route path="/introduction" component={introduction} />
 
-	    <Route path="/Login" component={Login} />
-	    <Route path="/Register" component={Register} />
 
     </Router>
     </Provider>,

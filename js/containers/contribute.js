@@ -1,6 +1,6 @@
-import React,{Component, PropTypes}from 'react';
+import React, {Component, PropTypes}from 'react';
 import { connect } from 'react-redux';
-import {fetchGET} from '../actions';
+import { fetchGET } from '../actions';
 
 
 
@@ -12,11 +12,10 @@ class contribute extends React.Component {
     componentWillMount() {
     document.title="升级规则";
     let params = this.props.location.query;
-    console.log(params)
     this.props.dispatch(fetchGET("GetAccountInfor", params))
     }
     componentWillReceiveProps(nextProps) {
-      console.log("componentWillReceiveProps",nextProps);
+      // console.log("componentWillReceiveProps", nextProps);
     }
     render() {
     	const {posts} = this.props;

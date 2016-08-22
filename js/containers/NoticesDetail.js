@@ -1,6 +1,5 @@
 // 公告详情页
-
-import React,{Component, PropTypes}from 'react';
+import React, {Component, PropTypes}from 'react';
 import { connect } from 'react-redux';
 import {fetchPosts} from '../actions';
 import {FormatMoney} from '../utils';

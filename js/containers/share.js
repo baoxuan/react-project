@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import {reset, show_error, fetchGETParams, _submitForm } from '../actions'
 import TextInput from "../components/TextInput"
 import Toast from "../components/Toast"
-
+import { hashHistory } from 'react-router'
 import classnames from 'classnames'
 
 class Share extends React.Component {
@@ -16,7 +16,7 @@ class Share extends React.Component {
         	disable:true, // 按钮是否置灰
 		 	tickState:0, // 倒计时状态，0：没点击时 ，1：倒计时， 2 倒计时结束
 		    second:60, // 倒计时
-		  	ToastShow:false, //Toast 隐藏
+		  	ToastShow:false //Toast 隐藏
         }
     }
     componentWillMount() {
@@ -59,7 +59,7 @@ class Share extends React.Component {
 	}    renderTop(){
     	const { user } = this.props;
     	if(user && user.Phone){
-    		 let phone = user.Phone.substring(0,3)+'****'+user.Phone.substring(7);
+    		 let phone = user.Phone.substring(0, 3)+'****'+user.Phone.substring(7);
     		return(
 				<p style={{marginTop:this.state.height/2}}>您的好友{phone}已注册{user.RegDate}天</p>
 			)
@@ -176,7 +176,7 @@ class Share extends React.Component {
 		    code = ReactDOM.findDOMNode(this.refs.code).value,
 		    pwd = ReactDOM.findDOMNode(this.refs.password).value,
 		    FromId = this.props.location.query.userid;
-		let data = {"Phone":phone, "Pwd":pwd, "Code":code,"FromId":FromId};
+		let data = {"Phone":phone, "Pwd":pwd, "Code":code, "FromId":FromId};
 	        this.props.dispatch(_submitForm("Regist", data));
 		}
 	}
@@ -186,9 +186,9 @@ class Share extends React.Component {
 function mapStateToProps(state) {
   const { postsByApi } = state
   const {
-    items: user,
+    items: user
   } = postsByApi["InvitorInfo"] || {
-    items: "",
+    items: ""
   }
   const {
     isFetching,

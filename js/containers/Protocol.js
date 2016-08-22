@@ -1,6 +1,6 @@
 // 投资协议页面
 
-import React,{Component, PropTypes}from 'react';
+import React, {Component, PropTypes}from 'react';
 import { connect } from 'react-redux';
 import {fetchPosts} from '../actions';
 import {FormatMoney} from '../utils';
@@ -13,7 +13,7 @@ class Protocol extends React.Component {
     componentWillMount() {
     	document.title="投资协议";
     	let params = this.props.location.query;
-    	this.props.dispatch(fetchPosts("GetSignInfor","", params));
+    	this.props.dispatch(fetchPosts("GetSignInfor", "", params));
     }
     renderHQ(){
        const {posts} = this.props;
@@ -73,7 +73,7 @@ class Protocol extends React.Component {
 		}
     }
     renderDQ(){
-    	const {posts,location} = this.props;
+    	const {posts, location} = this.props;
     	let type = location.query.type;
     	let rate;
     	if(posts){

@@ -1,4 +1,4 @@
-import React,{Component, PropTypes}from 'react';
+import React, {Component, PropTypes}from 'react';
 import TabsItem from './TabsItem';
 import cx from 'classnames'
 
@@ -27,7 +27,7 @@ class Tabs extends React.Component {
   			this.props.children.map((child)=>(
   				<li className={cx({on:child.props.eventKey == activeKey})}
   					key ={child.props.eventKey}
-  					onClick={this.handleClick.bind(this,child.props.eventKey )}>
+  					onClick={this.handleClick.bind(this, child.props.eventKey )}>
   					{child.props.title}
   				</li>
   				))
@@ -49,7 +49,7 @@ class Tabs extends React.Component {
     if(this.props.children.length >1){
         return (
         	<div>
-        	<div className="header">
+        	<div className="head">
 	        	<ul>
 	        	{this.renderNav()}
 			    </ul>

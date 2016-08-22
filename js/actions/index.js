@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import {getAPI, getBaseUrl} from "../utils/Api";
-import {getRandomCode, getCookie} from "../utils";
+import {getRandomCode} from "../utils";
 import merge from 'lodash/merge'
 
 import {REQUEST_POSTS,
@@ -8,7 +8,10 @@ import {REQUEST_POSTS,
         SHOW_ERROR,
         RESET,
         REQUEST_FORM,
-        RECEIVE_FORM} from '../constants';
+        RECEIVE_FORM,
+        CHANGE_TYPE,
+        SELECT_PAY_TYPE_LOG,
+        SELECT_PAY_TYPE } from '../constants';
 
 //开始获取新闻action
 function requestPosts(ApiName) {
@@ -28,9 +31,8 @@ function receivePosts(ApiName, json) {
 
 //获取，先触发requestPosts开始获取action，完成后触发receivePosts获取成功的action
 export function fetchPosts(ApiName, header, params) {
-  var header = merge({"Content-Type":"application/json"},header);
+  var header = merge({"Content-Type":"application/json"}, header);
   // (原来cookie获取)var header = {"Content-Type":"application/json", "code":getCookie("code"), "token":getCookie("token")};
-  // 使用fetch。部分浏览器不兼容，改用reqwest。
   return dispatch => {
     dispatch(requestPosts(ApiName));
     return fetch(getBaseUrl()+ getAPI(ApiName),
@@ -141,5 +143,26 @@ export function fetchPostsByForm(ApiName, header, params) {
 }
 
 //这些方法都导出,在其他文件导入时候,使用import * as actions 就可以生成一个actions对象包含所有的export
-
+//
+// 切换交易记录type
+export function changeType(value){
+  return{
+    type:CHANGE_TYPE,
+    value
+  }
+}
+export function selectPaytypelog(name, value){
+  return{
+    type:SELECT_PAY_TYPE_LOG,
+    name,
+    value
+  }
+}
+export function selectPaytype(name, value){
+  return{
+    type:SELECT_PAY_TYPE,
+    name,
+    value
+  }
+}
 

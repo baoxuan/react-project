@@ -1,4 +1,4 @@
-import React,{Component, PropTypes}from 'react';
+import React, {Component, PropTypes}from 'react';
 import { connect } from 'react-redux';
 import {fetchPosts} from '../actions';
 import {FormatMoney, getTime, get2Decimals, getTime1} from '../utils';
@@ -38,7 +38,7 @@ class dregform extends React.Component {
             if(scrollTop + innerHeight >= scrollHeight && this.state.isLoading ){
                 PageIndex++;
                 this.setState({PageIndex:PageIndex});
-	            this.props.dispatch(fetchPosts("PlatformListDreg_User",header,
+	            this.props.dispatch(fetchPosts("PlatformListDreg_User", header,
 	                  {
 	                    PageIndex:PageIndex,
 	                    RecordPerPage:30
@@ -55,7 +55,7 @@ class dregform extends React.Component {
     		PageIndex:1,
     		RecordPerPage:30
     	}
-    	this.props.dispatch(fetchPosts("PlatformListDreg_User", header,params));
+    	this.props.dispatch(fetchPosts("PlatformListDreg_User", header, params));
     }
     componentWillReceiveProps(nextProps) {
 		if(!isEqual(nextProps.posts.ProjectList, this.props.posts.ProjectList)){
@@ -63,15 +63,12 @@ class dregform extends React.Component {
 		}
     }
     componentDidMount() {
-        console.log("componentDidMount");
         this._scrollListener = Events.on(window, 'scroll', this.checkButtom.bind(this));
      }
     componentWillUnmount() {
-        console.log("componentWillUnmount");
         this._scrollListener && this._scrollListener.off();
     }
     renderList(){
-    	const { posts } = this.props;
     	if(this.state.listItems){
     		return(
     		this.state.listItems.map((msg)=>(

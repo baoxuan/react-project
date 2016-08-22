@@ -10,7 +10,7 @@ class SelectItem extends Component{
 			);
 	}
 	_click(){
-		this.props._onClick(this.props.name,this.props.value);
+		this.props._onClick(this.props.name, this.props.value);
 	}
 
 }
@@ -18,7 +18,7 @@ class SelectItem extends Component{
 SelectItem.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired
+  value: PropTypes.number.isRequired
 };
 
 export default SelectItem;

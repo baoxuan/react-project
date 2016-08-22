@@ -1,4 +1,4 @@
-import React,{Component, PropTypes}from 'react';
+import React, {Component, PropTypes}from 'react';
 import cx from 'classnames'
 class TabsItem extends React.Component {
     constructor(props) {
